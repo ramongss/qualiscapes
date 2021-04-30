@@ -19,4 +19,5 @@ BugReports: https://github.com/ramongss/qualiscapes/issues
 Depends: 
     R (>= 2.10)
 Imports: 
+    magrittr,
     readr
