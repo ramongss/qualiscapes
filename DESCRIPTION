@@ -1,5 +1,5 @@
 Package: qualiscapes
-Title: Make available the preliminar Qualis CAPES 2019
+Title: Make available the preliminary Qualis CAPES 2019
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Ramon",
@@ -16,3 +16,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 URL: https://github.com/ramongss/qualiscapes
 BugReports: https://github.com/ramongss/qualiscapes/issues
+Depends: 
+    R (>= 2.10)
+Imports: 
+    readr
