@@ -7,7 +7,7 @@ library(shinyWidgets)
 library(shinydashboard)
 library(magrittr, include.only = "%>%")
 
-da_qualis <- qualiscapes::get_qualis(file = NULL) %>%
+da_qualis <- get_qualis(file = NULL) %>%
   dplyr::rename(issn = ISSN_2019,
                 titulo = TITULO_2019,
                 estrato = ESTRATO_2019)
