@@ -80,3 +80,7 @@ count_qualis %>%
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+## Shiny App
+
+<https://ramongss.shinyapps.io/qualiscapes/>

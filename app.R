@@ -1,4 +1,6 @@
-devtools::load_all()
+# devtools::load_all()
+
+load("data/qualiscapes.rda")
 
 library(DT)
 library(shiny)

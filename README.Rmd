@@ -65,3 +65,7 @@ count_qualis %>%
   ggplot2::labs(x = "Qualis CAPES", y = "No. of Journals/Congresses") +
   ggplot2::scale_color_discrete()
 ```
+
+## Shiny App
+
+https://ramongss.shinyapps.io/qualiscapes/
