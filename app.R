@@ -20,7 +20,8 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                          selectizeInput(
                            inputId = "issn_i",
                            label = "Selecione e/ou digite o(s) número(s) de ISSN",
-                           choices =  sort(unique(da_qualis$issn)),
+                           # choices =  sort(unique(da_qualis$issn)),
+                           choices = NULL,
                            multiple = TRUE,
                            selected = FALSE
                          ),
@@ -28,7 +29,8 @@ ui <- fluidPage(theme = shinytheme("cerulean"),
                          selectizeInput(
                            inputId = "titulo_i",
                            label = "Selecione e/ou digite o(s) Título(s) do(s) Períodico(s)",
-                           choices =  sort(unique(da_qualis$titulo)),
+                           # choices =  sort(unique(da_qualis$titulo)),
+                           choices = NULL,
                            multiple = TRUE,
                            selected = FALSE
                          ),
@@ -51,7 +53,7 @@ server <- function(input, output) {
 
   filtered_data <- reactive({
 
-    req(input$estrato_i)
+    # req(input$issn_i)
 
     da_qualis2 <- da_qualis %>%
       dplyr::filter(as.character(estrato) >= as.character(input$estrato_i[1]),
@@ -72,6 +74,20 @@ server <- function(input, output) {
       )
 
   } , escape = FALSE)
+
+  updateSelectizeInput(
+    inputId = "issn_i",
+    label = "Selecione e/ou digite o(s) número(s) de ISSN",
+    choices =  sort(unique(da_qualis$issn)),
+    server = TRUE
+  )
+
+  updateSelectizeInput(
+    inputId = "titulo_i",
+    label = "Selecione e/ou digite o(s) Título(s) do(s) Períodico(s)",
+    choices =  sort(unique(da_qualis$titulo)),
+    server = TRUE
+  )
 
 }
 
