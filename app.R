@@ -15,51 +15,74 @@ da_qualis <- qualiscapes %>%
                 estrato = ESTRATO_2019)
 
 ui <- fluidPage(theme = shinytheme("cerulean"),
-                titlePanel("Pesquisa de Periódicos - 2019 Qualis CAPES"),
-                  sidebarPanel(
-                         selectizeInput(
-                           inputId = "issn_i",
-                           label = "Selecione e/ou digite o(s) número(s) de ISSN",
-                           # choices =  sort(unique(da_qualis$issn)),
-                           choices = NULL,
-                           multiple = TRUE,
-                           selected = FALSE
-                         ),
-
-                         selectizeInput(
-                           inputId = "titulo_i",
-                           label = "Selecione e/ou digite o(s) Título(s) do(s) Períodico(s)",
-                           # choices =  sort(unique(da_qualis$titulo)),
-                           choices = NULL,
-                           multiple = TRUE,
-                           selected = FALSE
-                         ),
-
-                         sliderTextInput(
-                           inputId = "estrato_i",
-                           label = "Escolha a classificação no Periódicos CAPES",
-                           choices = sort(unique(da_qualis$estrato)),
-                           selected = c("A1", "NP"),
-                           grid = TRUE
-                         )
+                titlePanel(
+                  fluidRow(
+                    column(9, "Pesquisa de Periódicos"),
+                    column(3, actionButton("github",
+                                           label = "Código",
+                                           icon = icon("github"),
+                                           width = "100px",
+                                           onclick ="window.open(`https://github.com/beatrizmilz/QualisCAPES/blob/master/app.R`, '_blank')",
+                                           style="float:right"))
                   ),
+                  windowTitle = "Pesquisa de Periódicos"
+                ),
+                hr(),
+                sidebarPanel(
+                  shinyjs::useShinyjs(),
+                  div(
+                      id = "form",
+                       selectizeInput(
+                         inputId = "issn_i",
+                         label = "Selecione e/ou digite o(s) número(s) de ISSN",
+                         # choices =  sort(unique(da_qualis$issn)),
+                         choices = NULL,
+                         multiple = TRUE,
+                         selected = FALSE
+                       ),
+                      #
+                       selectizeInput(
+                         inputId = "titulo_i",
+                         label = "Selecione e/ou digite o(s) Título(s) do(s) Períodico(s)",
+                         # choices =  sort(unique(da_qualis$titulo)),
+                         choices = NULL,
+                         multiple = TRUE,
+                         selected = FALSE
+                       ),
+                      #
+                       sliderTextInput(
+                         inputId = "estrato_i",
+                         label = "Escolha a classificação no Periódicos CAPES",
+                         choices = sort(unique(da_qualis$estrato)),
+                         selected = c("A1", "NP"),
+                         grid = TRUE
+                       )
+                  ),
+                  actionButton("resetAll", "Limpar entradas")
+                ),
                 mainPanel(
                   # Adiciona a tabela
-                  DTOutput("tabela_periodicos")
+                  h3("Qualis CAPES 2019"),
+                  DTOutput("tabela_periodicos"),
+                  hr(),
+                  p(br("Desenvolvido por",
+                       tags$a(href = "https://ramongss.github.io", "Ramon G. da Silva"),
+                       "usando o pacote",
+                       tags$a(href = "https://github.com/ramongss/qualiscapes", "{qualiscapes},"),
+                       "RStudio e Shiny App."),
+                    style="text-align:center")
                 )
-)
+              )
 
-server <- function(input, output) {
+server <- function(input, output,session) {
 
   filtered_data <- reactive({
 
-    # req(input$issn_i)
-
     da_qualis2 <- da_qualis %>%
-      dplyr::filter(as.character(estrato) >= as.character(input$estrato_i[1]),
-                    as.character(estrato) <= as.character(input$estrato_i[2])) %>%
       {if (!is.null(input$issn_i)) dplyr::filter(da_qualis, issn %in% input$issn_i) else .} %>%
       {if (!is.null(input$titulo_i)) dplyr::filter(da_qualis, titulo %in% input$titulo_i) else .} %>%
+      dplyr::filter(as.character(estrato) >= as.character(input$estrato_i[1]),
+                    as.character(estrato) <= as.character(input$estrato_i[2])) %>%
       dplyr::arrange(estrato)
 
     da_qualis2
@@ -89,7 +112,12 @@ server <- function(input, output) {
     server = TRUE
   )
 
-}
+  observeEvent(input$resetAll, {
+    shinyjs::reset("form")
+    updateSliderTextInput(session, 'estrato_i', selected = c("A1", "NP"))
+  }
+  )
 
+}
 
 shinyApp(ui, server)
