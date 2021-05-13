@@ -67,9 +67,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="qualiscapes" class="section level1">
+<div id="-qualiscapes" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#qualiscapes" class="anchor"></a>qualiscapes</h1></div>
+<a href="#-qualiscapes" class="anchor"></a><img src="https://user-images.githubusercontent.com/47225177/118192101-fd329780-b41b-11eb-80d0-10a1e4295b37.png" width="150" align="right"> qualiscapes</h1></div>
 <!-- badges: start -->
 
 <p>The goal of <code>qualiscapes</code> is to get the preliminary 2019 QUALIS CAPES.</p>
@@ -102,9 +102,9 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">count_qualis</span> <span class="op">&lt;-</span> 
   <span class="va">da_qualis</span> <span class="op">%&gt;%</span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>qualis <span class="op">=</span> <span class="va">ESTRATO_2019</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">qualis</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>qualis <span class="op">=</span> <span class="va">ESTRATO_2019</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">qualis</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">count_qualis</span>
 <span class="co">#&gt; # A tibble: 10 x 2</span>
@@ -130,6 +130,11 @@
   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Qualis CAPES"</span>, y <span class="op">=</span> <span class="st">"No. of Journals/Congresses"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_hue.html">scale_color_discrete</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
+</div>
+<div id="shiny-app" class="section level2">
+<h2 class="hasAnchor">
+<a href="#shiny-app" class="anchor"></a>Shiny App</h2>
+<p><a href="https://ramongss.shinyapps.io/qualiscapes/" class="uri">https://ramongss.shinyapps.io/qualiscapes/</a></p>
 </div>
 </div>
   </div>

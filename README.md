@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# qualiscapes
+# <img src="https://user-images.githubusercontent.com/47225177/118192101-fd329780-b41b-11eb-80d0-10a1e4295b37.png" width="150" align="right"/> qualiscapes
 
 <!-- badges: start -->
 

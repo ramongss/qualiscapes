@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 devtools::load_all()
 ```
 
-# qualiscapes
+# <img src="https://user-images.githubusercontent.com/47225177/118192101-fd329780-b41b-11eb-80d0-10a1e4295b37.png" width="150" align="right"/> qualiscapes
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/ramongss/qualiscapes/workflows/R-CMD-check/badge.svg)](https://github.com/ramongss/qualiscapes/actions)
